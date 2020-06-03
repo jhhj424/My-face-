@@ -4,6 +4,7 @@
 const URL = 'https://teachablemachine.withgoogle.com/models/Kk8I3zFKJ/';
 let model, webcam, labelContainer, maxPredictions, conceptType;
 function selectType(type) {
+    $('#dropText').text(type);
     conceptType = type;
 }
 // Load the image model and setup the webcam
