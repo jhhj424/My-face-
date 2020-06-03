@@ -198,6 +198,12 @@ img {
     background-color: transparent;
     font-size: 0.9rem !important;
 }
+.blog-link {
+    color: #3b5998;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 1.2rem !important;
+}
 .title {
     line-height: 1.67;
     text-align: center;
