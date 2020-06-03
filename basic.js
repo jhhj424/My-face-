@@ -30,13 +30,13 @@ async function predict_귀멸의칼날() {
     prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
     switch (prediction[0].className) {
         case 'tan':
-            resultMessage = '탄지로';
+            resultMessage = '카마도 탄지로';
             break;
         case 'zen':
-            resultMessage = '젠이츠';
+            resultMessage = '아가츠마 젠이츠';
             break;
         case 'ino':
-            resultMessage = '이노스케';
+            resultMessage = '하시비라 이노스케';
             break;
     }
     $('.resultMessage').html(resultMessage);
