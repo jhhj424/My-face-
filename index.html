@@ -64,7 +64,8 @@
                     $('.image-upload-wrap').hide();
                     $('.file-upload-image').attr('src', e.target.result);
                     $('.file-upload-content').show();
-                    $('.image-title').html(input.files[0].name);
+                    // $('.image-title').html(input.files[0].name);
+                    $('.image-title').html('다시하기');
                 };
                 reader.readAsDataURL(input.files[0]);
                 init().then(() => {
@@ -115,8 +116,8 @@
             <div class="addthis_inline_share_toolbox_5xoa"></div>
 
             <div class="image-title-wrap">
-                <button type="button" onclick="removeUpload()" class="remove-image">Remove
-                    <span class="image-title">Uploaded Image</span>
+                <button type="button" onclick="removeUpload()" class="remove-image">
+                    <span class="image-title"></span>
                 </button>
             </div>
         </div>
