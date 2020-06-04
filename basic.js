@@ -1,14 +1,15 @@
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 // the link to your model provided by Teachable Machine export panel
-const URL = 'https://teachablemachine.withgoogle.com/models/Kk8I3zFKJ/';
+var URL = '';
+
 let model, webcam, labelContainer, maxPredictions, conceptType;
 function selectType(type) {
     $('#dropText').text(type);
     conceptType = type;
 }
 // Load the image model and setup the webcam
-async function init_귀멸의칼날() {
+async function init() {
     const modelURL = URL + 'model.json';
     const metadataURL = URL + 'metadata.json';
     // load the model and metadata
@@ -24,7 +25,7 @@ async function init_귀멸의칼날() {
     }
 }
 // run the webcam image through the image model
-async function predict_귀멸의칼날() {
+async function predict() {
     // predict can take in an image, video or canvas html element
     var image = document.getElementById('face-image');
     const prediction = await model.predict(image, false);
@@ -39,6 +40,29 @@ async function predict_귀멸의칼날() {
         case 'ino':
             resultMessage = '하시비라 이노스케';
             break;
+        case 'Rm':
+            resultMessage = 'RM';
+            break;
+        case 'Jin':
+            resultMessage = '진';
+            break;
+        case 'Sugar':
+            resultMessage = '슈가';
+            break;
+        case 'Jhop':
+            resultMessage = '제이홉';
+            break;
+        case 'Jimin':
+            resultMessage = '지민';
+            break;
+        case 'V':
+            resultMessage = '뷔';
+            break;
+        case 'Junguk':
+            resultMessage = '정국';
+            break;
+        default:
+            resultMessage = '없음'
     }
     $('.resultMessage').html(resultMessage);
     for (let i = 0; i < maxPredictions; i++) {
@@ -61,8 +85,17 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
         switch (conceptType) {
             case '귀멸의칼날':
-                init_귀멸의칼날().then(() => {
-                    predict_귀멸의칼날();
+                init().then(() => {
+                    // 귀멸의칼날
+                    URL = 'https://teachablemachine.withgoogle.com/models/Kk8I3zFKJ/'
+                    predict();
+                    $('#loading').hide();
+                });
+            case '방탄소년단':
+                init().then(() => {
+                    // 방탄소년단
+                    URL = 'ttps://teachablemachine.withgoogle.com/models/oIiRQ3XBR/'
+                    predict();
                     $('#loading').hide();
                 });
                 break;
