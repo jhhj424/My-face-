@@ -228,3 +228,7 @@ img {
 .btn-group-sm>.btn, .btn-sm {
     font-size: 1.5rem;
 }
+.ad-banner {
+    width : 320px;
+    margin : 0 auto;
+}
