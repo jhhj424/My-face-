@@ -1,2 +1,3 @@
-User-agent: *Allow:/
+User-agent: *
+Allow:/
 Sitemap: https://www.j-myface.shop/sitemap.xml
