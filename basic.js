@@ -3,6 +3,56 @@
 // the link to your model provided by Teachable Machine export panel
 // var URL = 'https://teachablemachine.withgoogle.com/models/Kk8I3zFKJ/';
 
+
+var conceptType
+function selectType(val) {
+    conceptType = val
+    $('#dropText').text(val)
+    removeUpload();
+}
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('.image-upload-wrap').hide();
+            $('#loading').show();
+            $('.file-upload-image').attr('src', e.target.result);
+            $('.file-upload-content').show();
+            // $('.image-title').html(input.files[0].name);
+            $('.image-title').html('다시하기');
+        };
+        reader.readAsDataURL(input.files[0]);
+        switch (conceptType) {
+            case '귀멸의칼날':
+                귀멸의칼날();
+                break;
+            case '방탄소년단':
+                방탄소년단();
+                break;
+            default:
+                alert('컨셉을 선택하세요');
+                location.reload(true);
+        }
+    } else {
+        removeUpload();
+    }
+}
+
+function removeUpload() {
+    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+    $('.file-upload-content').hide();
+    $('.image-upload-wrap').show();
+    $('#label-container').children().remove();
+    $('.resultMessage').html('');
+}
+$('.image-upload-wrap').bind('dragover', function() {
+    $('.image-upload-wrap').addClass('image-dropping');
+});
+$('.image-upload-wrap').bind('dragleave', function() {
+    $('.image-upload-wrap').removeClass('image-dropping');
+});
+
 function 귀멸의칼날() {
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
@@ -133,53 +183,4 @@ function 방탄소년단() {
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
     }
-}
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('.image-upload-wrap').hide();
-            $('#loading').show();
-            $('.file-upload-image').attr('src', e.target.result);
-            $('.file-upload-content').show();
-            // $('.image-title').html(input.files[0].name);
-            $('.image-title').html('다시하기');
-        };
-        reader.readAsDataURL(input.files[0]);
-        switch (conceptType) {
-            case '귀멸의칼날':
-                귀멸의칼날();
-                break;
-            case '방탄소년단':
-                방탄소년단();
-                break;
-            default:
-                alert('컨셉을 선택하세요');
-                location.reload(true);
-        }
-    } else {
-        removeUpload();
-    }
-}
-
-function removeUpload() {
-    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-    $('.file-upload-content').hide();
-    $('.image-upload-wrap').show();
-    $('#label-container').children().remove();
-    $('.resultMessage').html('');
-}
-$('.image-upload-wrap').bind('dragover', function() {
-    $('.image-upload-wrap').addClass('image-dropping');
-});
-$('.image-upload-wrap').bind('dragleave', function() {
-    $('.image-upload-wrap').removeClass('image-dropping');
-});
-
-var conceptType
-function selectType(val) {
-    conceptType = val
-    $('#dropText').text(val)
-    removeUpload();
 }
